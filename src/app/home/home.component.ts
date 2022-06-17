@@ -8,17 +8,17 @@ import { EmailModel } from '../models/emailModel';
 })
 export class HomeComponent implements OnInit {
 
-  emailModels:EmailModel[]=[]
+  // emailModels:EmailModel[]=[]
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  updateEmailList(event:any){
-    this.emailModels=event.data
-    console.log(event)
-    console.log("home",this.emailModels)
-  }
+  // updateEmailList(event:any){
+  //   this.emailModels=event.data
+  //   console.log(event)
+  //   console.log("home",this.emailModels)
+  // }
 
 }

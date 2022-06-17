@@ -1,5 +1,6 @@
 import { Component, OnInit ,Input} from '@angular/core';
 import { EmailModel } from '../models/emailModel';
+import { EmailService } from '../services/email.service';
 
 @Component({
   selector: 'app-list',
@@ -7,11 +8,13 @@ import { EmailModel } from '../models/emailModel';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  @Input() emailList:EmailModel[]=[]
+  // @Input() emailList:EmailModel[]=[]
+  emailList:EmailModel[]=[]
 
-  constructor() { }
+  constructor(private emailService:EmailService) { }
 
   ngOnInit(): void {
+    this.emailList=this.emailService.emailModels
   }
 
 }
