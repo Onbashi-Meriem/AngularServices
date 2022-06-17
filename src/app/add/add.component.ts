@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { EmailModel } from '../models/emailModel';
 
 @Component({
@@ -9,8 +9,9 @@ import { EmailModel } from '../models/emailModel';
 export class AddComponent implements OnInit {
 
   emailModels:EmailModel[]=[]
-  // email:string
 @ViewChild('emailInput') email:ElementRef;
+@Output() myEvent:EventEmitter<any>=new EventEmitter()
+
   constructor() { }
 
   ngOnInit(): void {
@@ -18,12 +19,15 @@ export class AddComponent implements OnInit {
 
   addEmail(){
     let emailModel=new EmailModel();
-    console.log(this.email.nativeElement.value)
+    // console.log(this.email.nativeElement.value)
     emailModel.email=this.email.nativeElement.value
     emailModel.date=Date()
 
     this.emailModels.push(emailModel)
-    console.log(this.emailModels)
+    this.email.nativeElement.value=''
+    // console.log(this.emailModels)
+
+    this.myEvent.emit({data:this.emailModels})
   }
 
 }
