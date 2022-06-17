@@ -1,5 +1,5 @@
 <div class="mb-3">
     <label for="formGroupExampleInput" class="form-label">Email Address</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" >
+    <input type="text" class="form-control" id="formGroupExampleInput" #emailInput>
   </div>
-  <button class="btn btn-success">Save</button>
+  <button class="btn btn-success" (click)="addEmail()">Save</button>
