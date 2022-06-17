@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EmailModel } from '../models/emailModel';
+import { LogService } from './log.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { EmailModel } from '../models/emailModel';
 export class EmailService {
   emailModels:EmailModel[]=[]
 
-  constructor() { }
+  constructor(private logService:LogService) { }
 
   add(email:string){
 
@@ -15,6 +16,7 @@ export class EmailService {
     emailModel.email=email
     emailModel.date=Date()
 
+    this.logService.addLog(email)
 
  this.emailModels.push(emailModel)
   }
